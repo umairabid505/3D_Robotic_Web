@@ -5,7 +5,6 @@ import { BetaSignupForm } from '../types';
 import { CheckCircle, Mail, User, Music, Sliders, ChevronRight, Lock, Loader2 } from 'lucide-react';
 import { supabase } from '../lib/supabaseClient';
 
-
 const EJS_SERVICE  = 'service_kmzwjcw';
 const EJS_TEMPLATE = 'template_lbtyev8';
 const EJS_PUBKEY   = 'VJTjMq9UyoVkSbtCN';
