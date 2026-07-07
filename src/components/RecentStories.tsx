@@ -11,13 +11,13 @@ interface Story {
 }
 
 const stories: Story[] = [
-  { id: 's1', name: 'Focus Flow', thumb: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=120&h=120&fit=crop&auto=format', videoId: 'jfKfPfyJRdk', color: '#6366f1' },
-  { id: 's2', name: 'Deep Work', thumb: 'https://images.unsplash.com/photo-1519681393784-d120267933ba?w=120&h=120&fit=crop&auto=format', videoId: 'lTRiuFIWV54', color: '#a855f7' },
-  { id: 's3', name: 'Rain Mode', thumb: 'https://images.unsplash.com/photo-1515694346937-94d85e41e6f0?w=120&h=120&fit=crop&auto=format', videoId: 'q76bMs-NwRk', color: '#3b82f6' },
-  { id: 's4', name: 'Binaural', thumb: 'https://images.unsplash.com/photo-1462275646964-a0e3386b89fa?w=120&h=120&fit=crop&auto=format', videoId: 'F7iepkCmWuE', color: '#ec4899' },
-  { id: 's5', name: 'Nature Zen', thumb: 'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=120&h=120&fit=crop&auto=format', videoId: 'eKFTSSKCzWA', color: '#10b981' },
-  { id: 's6', name: 'Cosmos', thumb: 'https://images.unsplash.com/photo-1502134249126-9f3755a50d78?w=120&h=120&fit=crop&auto=format', videoId: 'ZToicYcHIOU', color: '#f59e0b' },
-  { id: 's7', name: 'Café Hum', thumb: 'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=120&h=120&fit=crop&auto=format', videoId: 'BOdLmxy06H0', color: '#ef4444' },
+  { id: 's1', name: 'Focus Flow', thumb: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=72&h=72&fit=crop&auto=format', videoId: 'jfKfPfyJRdk', color: '#6366f1' },
+  { id: 's2', name: 'Deep Work', thumb: 'https://images.unsplash.com/photo-1519681393784-d120267933ba?w=72&h=72&fit=crop&auto=format', videoId: 'lTRiuFIWV54', color: '#a855f7' },
+  { id: 's3', name: 'Rain Mode', thumb: 'https://images.unsplash.com/photo-1515694346937-94d85e41e6f0?w=72&h=72&fit=crop&auto=format', videoId: 'q76bMs-NwRk', color: '#3b82f6' },
+  { id: 's4', name: 'Binaural', thumb: 'https://images.unsplash.com/photo-1462275646964-a0e3386b89fa?w=72&h=72&fit=crop&auto=format', videoId: 'F7iepkCmWuE', color: '#ec4899' },
+  { id: 's5', name: 'Nature Zen', thumb: 'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=72&h=72&fit=crop&auto=format', videoId: 'eKFTSSKCzWA', color: '#10b981' },
+  { id: 's6', name: 'Cosmos', thumb: 'https://images.unsplash.com/photo-1502134249126-9f3755a50d78?w=72&h=72&fit=crop&auto=format', videoId: 'ZToicYcHIOU', color: '#f59e0b' },
+  { id: 's7', name: 'Café Hum', thumb: 'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=72&h=72&fit=crop&auto=format', videoId: 'BOdLmxy06H0', color: '#ef4444' },
 ];
 
 export default function RecentStories() {
@@ -54,6 +54,7 @@ export default function RecentStories() {
                   <img
                     src={story.thumb}
                     alt={story.name}
+                    loading="lazy"
                     className="w-full h-full rounded-full object-cover transition-transform duration-300 group-hover:scale-105"
                   />
                 </div>

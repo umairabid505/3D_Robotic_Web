@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Soundscape } from './types';
 import { initialSoundscapes } from './mockData';
@@ -14,6 +14,7 @@ import ZenWorkspace from './components/ZenWorkspace';
 
 import { Sparkles, Sliders, Volume2, ArrowRight, Eye, RefreshCw, Layers, Compass, HelpCircle } from 'lucide-react';
 import Spline from '@splinetool/react-spline';
+import robotImage from './images/robot.png';
 
 export default function App() {
   const [soundscapes, setSoundscapes] = useState<Soundscape[]>(initialSoundscapes);
@@ -21,6 +22,33 @@ export default function App() {
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
   const [isZenMode, setIsZenMode] = useState<boolean>(false);
   const [activeFavoriteSound, setActiveFavoriteSound] = useState<string | null>(null);
+
+  const [isMobile, setIsMobile] = useState<boolean>(false);
+  const [robotInView, setRobotInView] = useState<boolean>(true);
+  const robotRef = useRef<HTMLDivElement>(null);
+
+  // Detect mobile screen width
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 1024); // lg breakpoint is 1024px in Tailwind
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  // IntersectionObserver to unmount Spline when scrolled off-screen
+  useEffect(() => {
+    if (!robotRef.current) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setRobotInView(entry.isIntersecting);
+      },
+      { threshold: 0.05 }
+    );
+    observer.observe(robotRef.current);
+    return () => observer.disconnect();
+  }, []);
 
   // Esc Key support to exit Zen / Blank Page Mode
   useEffect(() => {
@@ -206,10 +234,18 @@ export default function App() {
                 </div>
 
                 {/* Right Side Robot */}
-                <div className="h-[400px] sm:h-[500px] w-full relative order-1 lg:order-2">
+                <div ref={robotRef} className="h-[400px] sm:h-[500px] w-full relative order-1 lg:order-2">
                   {/* Glowing backdrop for the robot */}
                   <div className="absolute inset-10 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 opacity-20 blur-[80px] rounded-full pointer-events-none" />
-                  <Spline scene="https://prod.spline.design/bldIU7HCNbZAvK3N/scene.splinecode" className="w-full h-full relative z-10" />
+                  {isMobile || !robotInView ? (
+                    <img 
+                      src={robotImage} 
+                      alt="Robot Companion" 
+                      className="w-full h-full object-contain relative z-10 animate-pulse duration-[4000ms]" 
+                    />
+                  ) : (
+                    <Spline scene="https://prod.spline.design/bldIU7HCNbZAvK3N/scene.splinecode" className="w-full h-full relative z-10" />
+                  )}
                 </div>
               </div>
             </section>
