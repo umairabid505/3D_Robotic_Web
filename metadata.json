@@ -1,0 +1,6 @@
+{
+  "name": "Volum",
+  "description": "An exquisite, interactive, and minimal acoustic focus workspace for high-performance deep work.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
