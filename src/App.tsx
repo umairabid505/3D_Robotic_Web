@@ -14,7 +14,7 @@ import ZenWorkspace from './components/ZenWorkspace';
 
 import { Sparkles, Sliders, Volume2, ArrowRight, Eye, RefreshCw, Layers, Compass, HelpCircle } from 'lucide-react';
 import Spline from '@splinetool/react-spline';
-import robotImage from './images/robot.png';
+import robotImage from './images/robot2.png';
 
 export default function App() {
   const [soundscapes, setSoundscapes] = useState<Soundscape[]>(initialSoundscapes);
@@ -241,7 +241,7 @@ export default function App() {
                     <img 
                       src={robotImage} 
                       alt="Robot Companion" 
-                      className="w-full h-full object-contain relative z-10 animate-pulse duration-[4000ms]" 
+                      className="w-full h-full object-contain relative z-10" 
                     />
                   ) : (
                     <Spline scene="https://prod.spline.design/bldIU7HCNbZAvK3N/scene.splinecode" className="w-full h-full relative z-10" />
